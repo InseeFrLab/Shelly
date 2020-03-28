@@ -3,7 +3,7 @@ services:
 addons:
   organization: 'inseefrlab'
 script:
-  - docker build -t inseefrlab/shelly .
+  - docker build -t cchemin/shelly .
 deploy:
   skip_cleanup: true
   provider: script
