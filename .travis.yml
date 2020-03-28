@@ -3,12 +3,12 @@ services:
 addons:
   organization: 'inseefrlab'
 script:
-  - docker build -t cchemin/shelly .
+  - docker build -t inseefrlab/shelly .
 deploy:
   skip_cleanup: true
   provider: script
   script:
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    && docker push cchemin/shelly
+    && docker push inseefrlab/shelly
   on:
-    branch: ci
+    branch: master
