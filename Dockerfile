@@ -10,7 +10,6 @@ RUN apt-get install -y \
 	openssh-server
 RUN mkdir /var/run/sshd
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
-# ptete le sed du login fix
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 RUN echo "root:changeme" | chpasswd

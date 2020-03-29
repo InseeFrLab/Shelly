@@ -4,8 +4,8 @@
     "port": 2222
   },
   "user": {
-    "name": null,
-    "password": null,
+    "name": "root",
+    "password": "changeme",
     "privatekey": null
   },
   "ssh": {
