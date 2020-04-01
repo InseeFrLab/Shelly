@@ -9,7 +9,7 @@
     "privatekey": null
   },
   "ssh": {
-    "host": null,
+    "host": "localhost",
     "port": 22,
     "localAddress": null,
     "localPort": null,
