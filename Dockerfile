@@ -39,6 +39,19 @@ RUN cd /usr/bin && \
     rm vault_1.3.4_linux_amd64.zip
 RUN vault -autocomplete-install
 
+# Installing kubectl
+
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl
+RUN apt-get install bash-completion
+
+# Installing helm
+
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
+    chmod 700 get_helm.sh && \
+    ./get_helm.sh
+
 VOLUME ["/root/"]
 CMD /usr/sbin/sshd ; /usr/bin/node /root/webssh2/app/index.js
 EXPOSE 22 2222
