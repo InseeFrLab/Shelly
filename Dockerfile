@@ -24,6 +24,12 @@ RUN cd /root && git clone https://github.com/CChemin/webssh2.git
 ADD webssh2-config.json /root/webssh2/app/config.json
 RUN cd ~/webssh2 && git checkout default-host-at-root-path && cd ~/webssh2/app && npm install --production
 
+# Installing s3cmd
+
+RUN wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add -
+RUN wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list
+RUN apt install -y s3cmd
+
 VOLUME ["/root/"]
 CMD /usr/sbin/sshd ; /usr/bin/node /root/webssh2/app/index.js
 EXPOSE 22 2222
