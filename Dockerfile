@@ -30,6 +30,15 @@ RUN wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-ke
 RUN wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list
 RUN apt install -y s3cmd
 
+# Installing vault
+
+RUN apt-get install -y unzip
+RUN cd /usr/bin && \
+    wget https://releases.hashicorp.com/vault/1.3.4/vault_1.3.4_linux_amd64.zip && \
+    unzip vault_1.3.4_linux_amd64.zip && \
+    rm vault_1.3.4_linux_amd64.zip
+RUN vault -autocomplete-install
+
 VOLUME ["/root/"]
 CMD /usr/sbin/sshd ; /usr/bin/node /root/webssh2/app/index.js
 EXPOSE 22 2222
