@@ -12,3 +12,11 @@ deploy:
     && docker push inseefrlab/shelly
   on:
     branch: master
+deploy_cloudshell:
+  skip_cleanup: true
+  provider: script
+  script:
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  && docker push inseefrlab/shelly:cloudshell
+  on:
+    branch: cloudshell
