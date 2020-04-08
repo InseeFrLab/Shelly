@@ -4,11 +4,13 @@ addons:
   organization: 'inseefrlab'
 script:
   - docker build -t inseefrlab/shelly .
+  - docker build -f Dockerfile.cloudshell -t inseefrlab/shelly:cloudshell .
 deploy:
   skip_cleanup: true
   provider: script
   script:
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     && docker push inseefrlab/shelly
+    && docker push inseefrlab/shelly:cloudshell
   on:
     branch: master
