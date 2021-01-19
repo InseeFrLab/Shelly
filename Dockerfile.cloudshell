@@ -1,6 +1,6 @@
 FROM inseefrlab/shelly
 
-RUN pt-get update -y && apt-get install -y unzip bash-completion
+RUN apt-get update -y && apt-get install -y unzip bash-completion
 
 # Installing mc
 
