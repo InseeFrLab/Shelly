@@ -30,3 +30,8 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master
     ./get_helm.sh
 
 RUN kubectl completion bash >/etc/bash_completion.d/kubectl
+
+# Installing onyxiactl
+
+RUN wget https://github.com/InseeFrLab/onyxia-cli/releases/download/master/onyxiactl-linux -O /usr/local/bin/onyxiactl && \
+    chmod +x /usr/local/bin/onyxiactl
