@@ -3,6 +3,7 @@ FROM ubuntu:22.04
 RUN yes | unminimize
 
 RUN apt-get -y update
+RUN apt-get install -y vim
 
 # SSH configuration
 
